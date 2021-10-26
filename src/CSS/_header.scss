@@ -47,10 +47,28 @@ nav{
                 position:relative;
                 right:50%;
                 padding: 1em;
+
                 a{
                     text-decoration: none;
-                    color: white;
+                    color: $white;
                 }
+
+               .svg-icon{
+                fill:#569e26;
+               }
+
+                .menu_link{
+                    background:$white;
+                    color: black;
+                    padding: 0.2em 0.7em 0.2em 0.7em;
+                    border-radius: 10px;
+
+                    &:hover{
+                        background: $warning;
+                        color: $white;
+                    }
+                }
+            
             }
        
             // margin: 2em 0em;

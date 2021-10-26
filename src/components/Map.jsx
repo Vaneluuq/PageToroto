@@ -4,6 +4,7 @@ import { useState, useEffect} from 'react';
 import axios from 'axios';
 import '../CSS/styles.scss';
 import iconDown from '../assets/chevron-down.svg'
+import { Link } from 'react-scroll';
 
 
 const Map = () => {
@@ -49,16 +50,6 @@ const Map = () => {
             mapboxApiAccessToken = {mapboxApiAccessToken}
             mapStyle="mapbox://styles/vaneluuq/ckv74p7i13j2l15qfqsk1o7v1"
             />
-          
-              {/* {data.map(place => (
-            <Marker key={place.id} 
-              latitude={place => place.geometry.coordinates[0][0][0]}
-              longitude = {place => place.geometry.coordinates[0][0][1]}
-              >
-                <div>Hola</div>
-            </Marker>
-            )
-            )}  */}
         </div>
         <div className="textContainer">
           <h1>Somos desarrolladores de proyectos</h1>
@@ -68,7 +59,15 @@ const Map = () => {
 
         <div className="nextSecction">
             <h4> Ver lista completa de proyectos </h4>
-            <a href="#section1"><img src={iconDown} alt=""/></a>
+            <Link
+              activeClass="active"
+              to="section1"
+              spy={true}
+              smooth={true}
+              offset={-70}
+              duration={500}>
+                <img src={iconDown} alt=""/>
+              </Link>
         </div>
       </section>
         );
@@ -81,3 +80,15 @@ export default Map;
     
 // <FetchData
 // setData={setData}/>
+
+
+
+       /* {data.map(place => (
+            <Marker key={place.id} 
+              latitude={place => place.geometry.coordinates[0][0][0]}
+              longitude = {place => place.geometry.coordinates[0][0][1]}
+              >
+                <div>Hola</div>
+            </Marker>
+            )
+            )}  */

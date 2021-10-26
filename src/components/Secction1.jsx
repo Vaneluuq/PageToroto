@@ -4,10 +4,10 @@ import '../CSS/styles.scss';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import imgProyect from '../assets/img_project_gallery_1.png'
+import Services from './Services';
 
 
 const DescriptionProyects = () => {
-
     const [data, setData] = useState([]);
 
 
@@ -24,8 +24,8 @@ const DescriptionProyects = () => {
 
 
     return ( 
-        <section id="seccion1" className="section1">
-          <h2>Todos nuestros proyectos</h2>
+        <section id="section1" className="section1">
+          <h2 className="titleSection1">Todos nuestros proyectos</h2>
           <div className="cards">
           {data.map(card => 
               <div key={card.id}>
@@ -34,7 +34,13 @@ const DescriptionProyects = () => {
                 location= {card.location}
                 name = {card.name}
                 description ={card.description}
-                services = {card.services}
+                servicesOffered = {
+                    card.services.map( service => 
+                        <Services
+                        service = {service}
+                        />
+                    )
+                }
                 />
               </div>
             )}

@@ -1,5 +1,6 @@
 import React from 'react';
 import '../CSS/styles.scss';
+import iconExternalLink from '../assets/external-link.svg'
 
 
 const Header = () => {
@@ -11,12 +12,11 @@ const Header = () => {
             </div>
             <div className="options">
                 <ul>
-                    <li><a class="menu_link" href="">PROYECTOS</a></li>
-                    <li><a class="menu_link" href="">SOBRE TOROTO</a></li>
-                    <li><a class="menu_link" href="">BLOG</a></li>
-                    <li><a class="menu_link" href="">META REGISTRO</a></li>
+                    <li><a href="">PROYECTOS</a></li>
+                    <li><a href="">SOBRE TOROTO</a></li>
+                    <li><a href="">BLOG</a></li>
+                    <li><a href=""> <img src={iconExternalLink} alt="" className="svg-icon"/> META REGISTRO</a></li>
                     <li><a class="menu_link" href="">CONTACTO</a></li>
-                   
                 </ul>
             </div>
         </div>

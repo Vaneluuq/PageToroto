@@ -1,8 +1,7 @@
 import React from 'react'
 import '../CSS/styles.scss';
-import Services from './Services';
 
-const CardsProyects = ({img, location, name, description, service}) => {
+const CardsProyects = ({img, location, name, description, servicesOffered}) => {
     return ( 
         <div className="card">
             <img className="cardImagen" src={img} alt="" />
@@ -10,9 +9,8 @@ const CardsProyects = ({img, location, name, description, service}) => {
                 <h5>{location}</h5>
                 <h2>{name}</h2>
                 <p>{description}</p>
-                <Services
-                 service = {service}
-                 />
+                <div className="cardServices">
+                    {servicesOffered}</div>
                 <button>Ver proyecto completo</button>
             </div>
         </div>
