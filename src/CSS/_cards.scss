@@ -1,0 +1,46 @@
+.card{
+    width: 40em;
+    height: 40em;
+    display: grid;
+    grid-template-rows: 40% 60%;
+    grid-template-columns: 100%;
+    margin: 1em;
+    border-radius: 10px;
+    box-shadow: 1px 2px 5px rgb(99, 99, 99);;
+}
+
+.cardImagen{
+    grid-row-start:1 ;
+    grid-row-end:2;
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.cardInformation{
+    grid-row-start:2 ;
+    grid-row-end:3;
+    padding: 0.5em 1.5em 0em 1.5em;
+
+    button{
+        width: 100%;
+        height: 3em;
+        margin-top: 2em;
+        text-transform: uppercase;
+    }
+
+}
+
+.section1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .cards{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+

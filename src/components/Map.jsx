@@ -1,8 +1,9 @@
 import React from 'react'
 import ReactMapGL, {Marker} from 'react-map-gl';
 import { useState, useEffect} from 'react';
-// import FetchData from './FetchData';
 import axios from 'axios';
+import '../CSS/styles.scss';
+import iconDown from '../assets/chevron-down.svg'
 
 
 const Map = () => {
@@ -25,11 +26,11 @@ const Map = () => {
     const mapboxApiAccessToken = "pk.eyJ1IjoidmFuZWx1dXEiLCJhIjoiY2t2NzFlYWttMHpwdDJwbzhsMHdhNG92byJ9.-tJpJFnNBJxriD-ci6olZg"
 
     const [viewport, setViewport] = useState({
-        latitude: 23.3142195,
-        longitude: -111.6414468,
+        latitude: 23.193872,
+        longitude: -101.896834,
         width: "100vw",
         height: "80vh",
-        zoom: 8
+        zoom:4.5
       });
 
       const handleViewportChange = (viewport) => {
@@ -40,16 +41,16 @@ const Map = () => {
      console.log(coordinates)
 
     return ( 
-        <>
-        <ReactMapGL
-        {...viewport}
-        onViewportChange={handleViewportChange}
-        mapboxApiAccessToken = {mapboxApiAccessToken}
-        mapStyle="mapbox://styles/vaneluuq/ckv74p7i13j2l15qfqsk1o7v1"
-        />
-
-        
-        {/* {data.map(place => (
+      <section className="sectionMap">
+        <div className="mapContainer">
+           <ReactMapGL
+            {...viewport}
+            // onViewportChange={handleViewportChange}
+            mapboxApiAccessToken = {mapboxApiAccessToken}
+            mapStyle="mapbox://styles/vaneluuq/ckv74p7i13j2l15qfqsk1o7v1"
+            />
+          
+              {/* {data.map(place => (
             <Marker key={place.id} 
               latitude={place => place.geometry.coordinates[0][0][0]}
               longitude = {place => place.geometry.coordinates[0][0][1]}
@@ -58,7 +59,18 @@ const Map = () => {
             </Marker>
             )
             )}  */}
-        </>
+        </div>
+        <div className="textContainer">
+          <h1>Somos desarrolladores de proyectos</h1>
+          <h3>Lorem ipsum dolor is simply dummy text of the printing and typesetting industry. Lorem, ipsum dolor sit amet consectetur adipisicing elit..</h3>
+          <button>Proponer un proyecto</button>
+        </div>
+
+        <div className="nextSecction">
+            <h4> Ver lista completa de proyectos </h4>
+            <a href="#section1"><img src={iconDown} alt=""/></a>
+        </div>
+      </section>
         );
 }
 

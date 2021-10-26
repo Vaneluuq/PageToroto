@@ -1,0 +1,53 @@
+$primary-color: #1930db;
+$font-family:  "Oswald", sans-serif;
+$second-color: #373737;
+
+@import "./header";
+@import "./cards";
+
+.sectionMap{
+    position: relative;
+    display: flex;
+}
+
+.textContainer{
+    width: 22em;
+    position: absolute;
+    top: 8em;
+    left: 3em;
+
+    h1{
+        font-size: 2.5em;
+        color: $second-color;
+    }
+
+    h3{
+        color: $second-color;
+    }
+
+    button{
+        background: $second-color ;
+        border: none;
+        color: white;
+        width: 20vw;
+        height: 3em;
+        font-size: 1em;
+        border-radius: 5px;
+    }
+} 
+
+.nextSecction{
+    width:18em;
+    position: absolute;
+    top: 82%;
+    left: 45%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+
+      h4{
+        color: $second-color;
+        font-size: 1.2em; 
+      }
+}
