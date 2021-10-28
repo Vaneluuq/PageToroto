@@ -1,30 +1,48 @@
 import React from 'react';
 import '../CSS/styles.scss';
 import iconExternalLink from '../assets/external-link.svg'
-
+import { useEffect } from 'react';
+import logo from "../assets/logo.svg"
 
 const Header = () => {
+    const [scrolled,setScrolled]=React.useState(false);
+
+    const handleScroll=() => {
+      const offset=window.scrollY;
+      if(offset > 200 ){
+        setScrolled(true);
+      }
+      else{
+        setScrolled(false);
+      }
+    }
+    useEffect(() => {
+      window.addEventListener('scroll',handleScroll)
+    })
+  
+    let x=['navbar'];
+    if(scrolled){
+      x.push('scrolled');
+    }
+    
     return ( 
-    <nav>
-        <div className="containerHeader">
+        <header className={x.join(" ")}>
             <div className="logo">
-                <a href="https://www.toroto.mx/es"><img src="https://www.toroto.mx/img/landing/logos/LOGO-BLANCO.png" alt="logo-img" /></a>
+                <a href="https://www.toroto.mx/es"><img src={logo} alt="logo-img" /></a>
             </div>
-            <div className="options">
+            <nav className="options">
                 <ul>
-                    <li><a href="">PROYECTOS</a></li>
-                    <li><a href="">SOBRE TOROTO</a></li>
-                    <li><a href="">BLOG</a></li>
-                    <li><a href=""> <img src={iconExternalLink} alt="" className="svg-icon"/> META REGISTRO</a></li>
-                    <li><a class="menu_link" href="">CONTACTO</a></li>
+                    <li><a href="/">PROYECTOS</a></li>
+                    <li><a href="#section1">SOBRE TOROTO</a></li>
+                    <li><a href="#section1">BLOG</a></li>
+                    <li><a href="#section1"> META REGISTRO</a></li>
+                    <li><a class="menu_link" href="#footer">CONTACTO</a></li>
                 </ul>
-            </div>
-        </div>
-    </nav>
+            </nav>
+        </header>
         );
     }
 
 export default Header;
-<div>
-    Soy el header 
-</div>
+
+{/* <img src={iconExternalLink} alt="" className="svg-icon"/> */}

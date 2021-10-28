@@ -1,57 +1,118 @@
-$primary-color: #1930db;
-$font-family:  "Oswald", sans-serif;
-$secondary-color: #373737;
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;600&family=Roboto:wght@100;300;400;500&display=swap');
+
+$primary-color: #1A30DB;
+$oswald:  'Oswald', sans-serif;
+$secondary-color: #333333;
 $white: #fff;
 $warning: #ffbc15;
+$roboto:'Roboto', sans-serif;
+$negro-toroto: #373737;
 
-@import "./header";
+@import "./map";
 @import "./section1";
+@import "./section2";
 
-.sectionMap{
+
+//navbar & footer
+
+.navbar{
     width: 100%;
-    height: 90vh;
-    position: relative;
+    height: 3.5em;
+    box-sizing: border-box;
+    background: $primary-color;
+    transition: all .2s ease;
+    z-index: 3;
+    display: grid;
+    grid-template-columns: 40% 50% 10%;
+    grid-template-rows: 100%;
+  }
+
+  .scrolled{
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+
+  .logo{
+    grid-column-start: 1;
+    grid-column-end: 2;
     display: flex;
-}
-
-.textContainer{
-    width: 22em;
-    position: absolute;
-    top: 8em;
-    left: 3em;
-
-    h1{
-        font-size: 2.5em;
-        color: $secondary-color;
+    justify-content: center;
+    align-items: center;
+        a{
+            img {
+            width: 10em;
+            height: 5em;
+            font-family: $roboto;
+            }
+        }
     }
 
-    h3{
-        color: $secondary-color;
-    }
-
-    button{
-        background: $secondary-color ;
-        border: none;
-        color: white;
-        width: 20vw;
-        height: 3em;
-        font-size: 1em;
-        border-radius: 5px;
-    }
-} 
-
-    .nextSecction{
-        width:18em;
-        position: absolute;
-        top: 73%;
-        left: 45%;
+    .options{
+        height: 5em;
+        width: 100%;
+        grid-column-start: 2;
+        grid-column-end: 3;
         display: flex;
-        flex-direction: column;
-        text-align: center;
+        // justify-content: space-around;
 
 
-      h4{
-        color: $secondary-color;
-        font-size: 1.2em; 
-      }
-}
+        ul {
+
+            float:left;
+            left:30%;
+            list-style-type:none;
+            margin:0 auto;
+            padding:0;
+            position:relative;
+
+            li{
+                float:left;
+                position:relative;
+                right:30%;
+                padding: 1em 1em 1em 0em;
+
+                a{
+                    text-decoration: none;
+                    color: $white;
+                }
+
+             
+
+                .menu_link{
+                    background:$white;
+                    color: black;
+                    padding: 0.2em 0.7em 0.2em 0.7em;
+                    border-radius: 10px;
+
+                    &:hover{
+                        background: $warning;
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+
+    footer{
+        width: 100%;
+        height: 5em;
+        background: $primary-color;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        .socialNetworks{
+            a{
+                padding: 0em 1em;
+            }
+        }
+
+        .logo{
+            height: 5em;
+        }
+    }
+
+
+

@@ -1,45 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ReactMapGL, {Marker} from 'react-map-gl';
-import { useState, useEffect} from 'react';
-import axios from 'axios';
 import '../CSS/styles.scss';
 import iconDown from '../assets/chevron-down.svg'
 import { Link } from 'react-scroll';
 
 
 const Map = () => {
-    const [data, setData] = useState([]);
-
-
-    useEffect(() => {
-      axios.get('https://fieldops-api.toroto.mx/api/projects')
-       .then(response => {
-          setData(response.data.data);
-        })
-         .catch(e => {
-          console.log(e);
-           })
-  }, []);
-
-  console.log(data)
-  
 
     const mapboxApiAccessToken = "pk.eyJ1IjoidmFuZWx1dXEiLCJhIjoiY2t2NzFlYWttMHpwdDJwbzhsMHdhNG92byJ9.-tJpJFnNBJxriD-ci6olZg"
 
     const [viewport, setViewport] = useState({
         latitude: 23.193872,
         longitude: -101.896834,
-        width: "100vw",
+        width: "99vw",
         height: "80vh",
         zoom:4.5
       });
 
-      const handleViewportChange = (viewport) => {
-          setViewport(viewport)
-      }
+      // const handleViewportChange = (viewport) => {
+      //     setViewport(viewport)
+      // }
 
-     const coordinates =data.map(s => s.geometry.coordinates[0][0][0])
-     console.log(coordinates)
+    //  const coordinates =data.map(s => s.geometry.coordinates[0][0][0])
+    //  console.log(coordinates)
 
     return ( 
       <section className="sectionMap">

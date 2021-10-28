@@ -1,7 +1,8 @@
 import React from 'react'
 import '../CSS/styles.scss';
+import { Link} from 'react-router-dom';
 
-const CardsProyects = ({img, location, name, description, servicesOffered}) => {
+const CardsProyects = ({img, location, name, description, servicesOffered, link}) => {
     return ( 
         <div className="card">
             <img className="cardImagen" src={img} alt="" />
@@ -11,7 +12,9 @@ const CardsProyects = ({img, location, name, description, servicesOffered}) => {
                 <p>{description}</p>
                 <div className="cardServices">
                     {servicesOffered}</div>
-                <button>Ver proyecto completo</button>
+                <Link to= {link}>
+                  <button>Ver proyecto completo</button>
+                </Link>
             </div>
         </div>
      );
