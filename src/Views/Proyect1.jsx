@@ -14,6 +14,25 @@ import Galery from '../components/seccion2/Galery';
 import Impact from '../components/seccion2/Impact';
 import About from '../components/seccion2/AboutToroto';
 import CardsImpact from '../components/seccion2/impact/CardImpact'
+import Modal from 'react-modal';
+import ModalInfo from '../components/seccion2/ModalInfo';
+
+
+const customStyles = {
+  overlay: {
+      backgroundColor: 'rgba(0,0,0,0.6)'
+    },
+  content: {
+    backgroundColor: 'rgba(0,0,0,0)',
+    // border: '1px solid #ccc',
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    transform: 'translate(-50%, -50%)',
+    border: "none"
+  },
+};
 
 
 const Proyect1 = ({data}) => {
@@ -45,7 +64,21 @@ for (let i = 0; i< route.length; i++){
   }
 }
 }
-  console.log(data.map(item => item.activities[0].name))
+  // console.log(data.map(item => item.activities[0].name))
+
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+
+  // Se abre modal que crea o edita nota
+   function openModal() {
+      setIsOpen(true);
+   }
+ 
+   // Se cierra modal que crea o edita nota
+   const closeModal = () => {
+     setIsOpen(false);
+   }
+ 
 
 
     return ( 
@@ -62,15 +95,28 @@ for (let i = 0; i< route.length; i++){
               />)}
           />
           <Implementation
+          openModal ={openModal}
           ActividadesList = {
            data.map(item => 
             <Details
             name={item.activities[0].name}
             description={item.activities[0].description}
             />
-            )
-          }
+            )}
           />
+          {
+            modalIsOpen ?
+            (
+              <Modal
+              isOpen={modalIsOpen}
+              style={customStyles}
+              onRequestClose={closeModal}>
+                <ModalInfo
+                closeModal= {closeModal}
+                />
+                </Modal>
+            ): (null)
+          }
           <WorksMap/>
           <Galery/>
           <Impact
@@ -80,9 +126,7 @@ for (let i = 0; i< route.length; i++){
                value={item.impact[0].value}
                name ={item.impact[0].name}
              />
-            )
-           }
-          />
+            )}/>
           <About/>
          <Footer/>
         </>

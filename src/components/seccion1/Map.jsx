@@ -72,12 +72,14 @@ const Map = ({data}) => {
                 <Popup latitude={selectPoint[1]} longitude={selectPoint[0]}>
                   {data.map(info => 
                   <div key={info.id}>
-                     <CardsProyects
+
+                    <div>Hola</div>
+                     {/* <CardsProyects
                       location= {info.location}
                       name = {info.name}
                       description ={info.description}
                       // link = { getLinks(card.id)
-                  />
+                  /> */}
                   </div>
                   )}
                 </Popup>

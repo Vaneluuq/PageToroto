@@ -3,6 +3,7 @@
         height: 90vh;
         position: relative;
         display: flex;
+        color: $gris1;
     }
     
     .textContainer{
@@ -14,20 +15,18 @@
     
         h1{
             font-size: 3em;
-            color: $secondary-color;
             font-weight: 400;
             font-style: normal;
         }
     
         h3{
-            color: $secondary-color;
             font-weight: 500;
             font-style: normal;
 
         }
     
         button{
-            background: $secondary-color ;
+            background: $gris1 ;
             border: none;
             color: white;
             width: 20vw;
@@ -48,7 +47,6 @@
             text-align: center;
 
           h4{
-            color: $secondary-color;
             font-size: 1.2em; 
             font-size: $oswald;
             font-weight: 600;

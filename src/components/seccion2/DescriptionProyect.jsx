@@ -7,7 +7,7 @@ const DescriptionProyect = ({location, nameProyect, servicesOffered, description
         <div className="itemsDescriptionProyect">
              <h4>{location}</h4>
              <h2>{nameProyect}</h2>
-             <div>{servicesOffered}</div>
+             <div className="itemsSevices">{servicesOffered}</div>
              <p>{description}</p>
            </div>
            <img className="imgProyect" src={imgProyect} alt="" />
