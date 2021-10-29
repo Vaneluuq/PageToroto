@@ -1,6 +1,6 @@
 import React from 'react'
-import serviceIcon from '../assets/service_icon.svg'
-import '../CSS/styles.scss';
+import serviceIcon from '../../assets/service_icon.svg'
+import '../../SASS/styles.scss';
 
 const Services = ({service}) => {
     return ( 

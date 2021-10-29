@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../components/Header';
 import DescriptionProyect from '../components/seccion2/DescriptionProyect';
 import Implementation from '../components/seccion2/Implementation';
-import Services from '../components/Services';
+import Services from '../components/seccion1/Services';
 import WorksMap from '../components/seccion2/WorksMap';
 import Footer from '../components/Footer'
 import imgProyect1 from '../assets/img_project_1.png';

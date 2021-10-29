@@ -1,5 +1,5 @@
 import React from 'react';
-import '../CSS/styles.scss';
+import '../SASS/styles.scss';
 import iconExternalLink from '../assets/external-link.svg'
 import { useEffect } from 'react';
 import logo from "../assets/logo.svg"

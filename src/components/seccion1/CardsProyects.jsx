@@ -1,5 +1,5 @@
 import React from 'react'
-import '../CSS/styles.scss';
+import '../../SASS/styles.scss';
 import { Link} from 'react-router-dom';
 
 const CardsProyects = ({img, location, name, description, servicesOffered, link}) => {

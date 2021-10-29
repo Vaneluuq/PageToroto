@@ -1,0 +1,247 @@
+$primary-color: #1A30DB;
+$oswald:  'Oswald', sans-serif;
+$gris1: #333333;
+$gris2:#6F6F6F;
+$gris5: #F2F2F2;
+$white: #fff;
+$warning: #ffbc15;
+$roboto:'Roboto', sans-serif;
+$negro-toroto: #373737;
+
+
+.container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.descriptionProyect{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 2em;
+    font-family: $roboto;
+    font-style: normal;
+
+}
+
+.itemsDescriptionProyect{
+    width: 48%;
+    height: auto;
+    padding: 0.5em;
+   
+
+
+    h4{
+        font-size: 1.5em;
+        font-weight: normal;
+        color: $gris1;
+    }
+    h2{
+        font-size: 3em;
+        font-weight: normal;
+        color: $gris1;
+    }
+
+    p{
+        color: $gris2;
+    }
+}
+
+.imgProyect{
+    width: 48%;
+    height: 30em;
+    border-radius: 70px;
+    padding: 2em 0.5em 0.5em 0.5em;
+}
+
+.descriptionProblem{
+    width: 100%;
+    color: $gris1;
+    font-family: $roboto;
+    font-style: normal;
+    letter-spacing: 0.5px;
+
+    h3{
+        font-size: 1.5em;
+        font-weight: 400;
+       
+    }
+}
+
+.implementation{
+    width: 80%;
+    display: flex;
+    flex-direction: column; 
+    font-family: $roboto;
+    font-style: normal;
+
+    h2{
+        color: $negro-toroto;
+        font-weight: normal;
+        font-size: 3em;
+    }
+
+    .activities{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+       
+        h5{
+            font-family: $roboto;
+            font-size: 1.5em;
+            font-style: normal;
+            font-weight: normal;
+            color: $gris1;
+            margin: 1em 0em;
+        }
+
+        .descriptionActivities{
+            margin: 0em 1em;
+        }
+    }
+}
+
+details{
+    height: auto;
+    border-top: $gris2 solid 1px;
+    font-family: $roboto;
+    font-style: normal;
+    color: $gris1;
+    cursor: pointer;
+
+    summary{
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0.15000000596046448px;
+        text-align: left;
+        transition: background-color 1s,color 1s;
+        padding: 0.5em 0em;
+    }
+
+    p{
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0.5px;
+        text-align: left;
+
+    }
+}
+
+details[open] summary {
+    background: $primary-color;
+    color: $white;
+}
+
+.sectionWorksMap{
+    font-family: $roboto;
+    font-style: normal;
+    h5{
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0.18000000715255737px;
+        text-align: left;
+        color: $gris1;
+    }
+
+}
+
+
+.containerImpact{
+    width: 80%;
+    
+    .containerCards{
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.cardImp{
+    width: 10em;
+    height: 10em;
+    text-align: center;
+    font-family: $roboto;
+    font-style: normal;
+    position: relative;
+
+    h3{
+        font-size: 50px;
+        color: $primary-color;
+        font-weight: 700;
+        line-height: 72px;
+        letter-spacing: -0.5px;
+        text-align: center;
+        margin: 0;
+        position: absolute;
+        top: 0;
+        z-index: 2;
+        padding: 0em 0.3em;
+        
+    }
+    
+    p{
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0.15px;
+        text-align: center;
+        margin: 0;
+        background: $gris5;
+        position: absolute;
+        bottom: 0;
+        border-radius: 10px;
+        position: absolute;
+        height: 5em;
+    }
+}
+
+
+.containerAbout{
+    width: 80%;
+    text-align: center;
+    font-family: $roboto;
+    font-style: normal;
+    padding: 6em 0em 9em 0em;
+
+    h3{
+        font-size: 34px;
+        font-weight: 400;
+        line-height: 36px;
+        letter-spacing: 0px;
+    }
+
+    p{
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0.5px;
+        text-align: left;
+    }
+
+    button{
+        width: 100%;
+        height: 3em;
+        background: $negro-toroto;
+        color: $white;
+        border: none;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 16px;
+        letter-spacing: 1.25px;
+        text-align: center;
+        margin-top: 2em;
+        cursor: pointer;
+
+
+        &:hover{
+            background: $warning;
+            color: $negro-toroto;
+            font-weight: 600;
+        }
+    }
+}

@@ -1,11 +1,11 @@
 import React from 'react'
 import CardsProyects from './CardsProyects';
-import '../CSS/styles.scss';
 import Services from './Services';
-import imgProyect1 from '../assets/img_project_1.png';
-import imgProyect2 from '../assets/img_project_2.png';
-import imgProyect3 from '../assets/img_project_3.png';
-import imgProyect4 from '../assets/img_project_4.png';
+import imgProyect1 from '../../assets/img_project_1.png';
+import imgProyect2 from '../../assets/img_project_2.png';
+import imgProyect3 from '../../assets/img_project_3.png';
+import imgProyect4 from '../../assets/img_project_4.png';
+import '../../SASS/styles.scss';
 
 const DescriptionProyects = ({data}) => {
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import ReactMapGL, {Marker} from 'react-map-gl';
 import { Link } from 'react-scroll';
+import '../../SASS/styles.scss'
 
 const WorksMap = () => {
     const mapboxApiAccessToken = "pk.eyJ1IjoidmFuZWx1dXEiLCJhIjoiY2t2NzFlYWttMHpwdDJwbzhsMHdhNG92byJ9.-tJpJFnNBJxriD-ci6olZg"

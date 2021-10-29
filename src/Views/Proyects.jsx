@@ -1,15 +1,17 @@
 import React from 'react'
 import Header from '../components/Header';
-import Map from '../components/Map';
-import DescriptionProyects from '../components/Secction1';
+import Map from '../components/seccion1/Map'
+import DescriptionProyects from '../components/seccion1/ShowProyects';
 import Footer from '../components/Footer';
-import '../CSS/styles.scss';
+import '../SASS/styles.scss';
 
 const Proyects = ({data}) => {
     return ( 
     <>
     <Header/>
-    <Map/>
+    <Map
+    data = {data}
+    />
     <DescriptionProyects
       data = {data}
     />
