@@ -25,7 +25,6 @@ const customStyles = {
 
 const Header = () => {
     const [scrolled,setScrolled]=React.useState(false);
-    const [showMenu, setShowMenu] = useState(false)
     const isDesktop = useMediaQuery('(min-width: 850px)');
 
 
@@ -66,16 +65,6 @@ const Header = () => {
    }
 
 
-  // function openMenu() {
-  //   setShowMenu(true);
-  // }
-
-  // const closeMenu = () => {
-  // setShowMenu(false);
-  // }
-
-
-
     return (
      <>
         {isDesktop ? (
@@ -88,7 +77,7 @@ const Header = () => {
                 <li><a href="/">PROYECTOS</a></li>
                 <li><a href="#section1">SOBRE TOROTO</a></li>
                 <li><a href="#section1">BLOG</a></li>
-                <li><a href="#section1"> META REGISTRO</a></li>
+                <li><a className="menu_img" href="#section1"> <img src={iconExternalLink} alt="" /> META REGISTRO </a></li>
                 <li><a class="menu_link" href="#footer">CONTACTO</a></li>
             </ul>
         </nav>

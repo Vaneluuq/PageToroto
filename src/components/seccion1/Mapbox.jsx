@@ -11,9 +11,13 @@ mapboxgl.accessToken= "pk.eyJ1IjoidmFuZWx1dXEiLCJhIjoiY2t2NzFlYWttMHpwdDJwbzhsMH
 
 
 const Mapbox = ({data}) => {
+    
+    // let [hoveredPlaceId, setHoverPlaceId]= useState(null);
     const mapContainerRef = useRef(null);
     const popUpRef = useRef(new mapboxgl.Popup({ offset: 15 }));
-  
+    
+   let hoveredPlaceId = null;
+
     // initialize map when component mounts
     useEffect(() => {
       const map = new mapboxgl.Map({
@@ -23,77 +27,98 @@ const Mapbox = ({data}) => {
         center: [-101.896834, 23.193872],
         zoom: 4.5
       });
-  
+
       // add navigation control (zoom buttons)
       map.addControl(new mapboxgl.NavigationControl(), "bottom-right");
-  
-      const coordenadas = data.map(item => item.geometry)
-    //   console.log(coordenadas)
 
-      map.on("load", () => {
+
+
+
+
+      map.on("load", async() => {
+        const geojson = await getDataToroto();
 
         map.addSource('torotoAPI', {
             type: 'geojson',
-            data: coordenadas
-            });
-        
-        map.addLayer({
-            'id': 'torotoAPI',
-            'type': '#627BC1',
-            'source': 'torotoAPI',
-            'layout': {
-              "fill-color":"#000000"
+            data: geojson,
+            generateId: true
+          });
+
+          map.addLayer({
+            'id': 'maine',
+            'type': 'fill',
+            'source': 'torotoAPI', // reference the data source
+            'layout': {},
+            'paint': {
+            'fill-color': '#627BC1', // blue color fill
+            'fill-opacity': [
+              'case',
+              ['boolean', ['feature-state', 'hover'], false],
+              1,
+              0.5
+              ]
             }
             });
 
-    })
+            map.addLayer({
+              'id': 'outline',
+              'type': 'line',
+              'source': 'torotoAPI',
+              'layout': {},
+              'paint': {
+              'line-color': '#000',
+              'line-width': 3
+              }
+              });
+
+              map.on('mousemove', 'maine', (e) => {
+                map.getCanvas().style.cursor = 'pointer';
+                if (e.features.length > 0) {
+                  if (hoveredPlaceId !== null) {
+                    map.setFeatureState(
+                      { source: 'torotoAPI', id: hoveredPlaceId},
+                      { hover: false }
+                      );
+                  }
+                  hoveredPlaceId = e.features[0].id;
+                    map.setFeatureState(
+                    { source: 'torotoAPI', id: hoveredPlaceId },
+                    { hover: true }
+                    );
+                }
+              })
+
+              map.on('mouseleave', 'maine', () => {
+                if (hoveredPlaceId!== null) {
+                map.setFeatureState(
+                { source: 'torotoAPI', id: hoveredPlaceId},
+                { hover: false }
+                );
+                }
+                hoveredPlaceId = null;
+                });
+
+              async function getDataToroto () {
+                let mygeojson = {"type": "FeatureCollection", "features": []}
+                    for(let info of data){
+                      const id = info
+                      const location = info.geometry.coordinates
+                      let coordinates = location
+                      let properties = id
+                      let feature = {"type": "Feature", "geometry": {"type": "Polygon", "coordinates": coordinates}, "properties": properties}
+                      mygeojson.features.push(feature);
+                    }
+                    return mygeojson;
+                  }
+                })
 
 
-   
-
-
-
-
-
-
-    //   async function getLocation(updateSource) {
-    //     try {
-    //     const response = await fetch(
-    //     'https://fieldops-api.toroto.mx/api/projects',
-    //     { method: 'GET' }
-    //     );
-    //     const { latitude, longitude } = await response.json();
-    //     // Fly the map to the location.
-    //     map.flyTo({
-    //     center: [longitude, latitude],
-    //     speed: 0.5
-    //     });
-    //     // Return the location of the ISS as GeoJSON.
-    //     return {
-    //     'type': 'FeatureCollection',
-    //     'features': [
-    //     {
-    //     'type': 'Feature',
-    //     'geometry': {
-    //     'type': 'Point',
-    //     'coordinates': [longitude, latitude]
-    //     }
-    //     }
-    //     ]
-    //     };
-    //     } catch (err) {
-    //     // If the updateSource interval is defined, clear the interval to stop updating the source.
-    //     if (updateSource) clearInterval(updateSource);
-    //     throw new Error(err);
-    //     }
-     
-        
 
      // clean up on unmount
       return () => map.remove();
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-        return ( 
+        return (
       <section className="sectionMap">
          <div ref={mapContainerRef} className="map-container" />
          <div className="textContainer">
@@ -117,8 +142,30 @@ const Mapbox = ({data}) => {
       </section>
     );
   };
-  
+
   export default Mapbox;
+
+
+
+
+  
+
+                  // async function getDataToroto () {
+                  //   let mygeojson = {"type": "FeatureCollection", "features": []}
+                  //       const arr = data.map(s => s.geometry.coordinates)
+                  //       for(let polygon of arr){
+                  //         let coordinates = polygon
+                  //         let properties = polygon
+                  //        //  delete properties.polygon[0];
+                  //         let feature = {"type": "Feature", "geometry": {"type": "Polygon", "coordinates": coordinates}, "properties": properties}
+                  //         mygeojson.features.push(feature);
+                  //       }
+                  //        return mygeojson;
+                  //      }
+                  //     })
+
+
+
 
 
 
@@ -147,8 +194,8 @@ const Mapbox = ({data}) => {
 
 //     // let marker = new mapboxgl.Marker
 
- 
-//     return ( 
+
+//     return (
 //       <section className="sectionMap">
 //          <div ref={mapContainer} className="map-container" />
 //          <div className="textContainer">
@@ -193,7 +240,7 @@ const Mapbox = ({data}) => {
 
 
 
-  
+
     //   map.on("moveend", async () => {
     //     // get new center coordinates
     //     const { lng, lat } = map.getCenter();
@@ -203,7 +250,7 @@ const Mapbox = ({data}) => {
     //     // all layers that consume the "random-points-data" data source will be updated automatically
     //     // map.getSource("random-points-data").setData(results);
     //   });
-  
+
 
     //   // change cursor to pointer when user hovers over a clickable feature
     //   map.on("mouseenter", "random-points-layer", e => {
@@ -211,12 +258,12 @@ const Mapbox = ({data}) => {
     //       map.getCanvas().style.cursor = "pointer";
     //     }
     //   });
-  
+
     //   // reset cursor to default when user is no longer hovering over a clickable feature
     //   map.on("mouseleave", "random-points-layer", () => {
     //     map.getCanvas().style.cursor = "";
     //   });
-  
+
     //   // add popup when user clicks a point
     //   map.on("click", "random-points-layer", e => {
     //     if (e.features.length) {
@@ -231,7 +278,7 @@ const Mapbox = ({data}) => {
     //         .addTo(map);
     //     }
     //   });
-  
+
     //   // clean up on unmount
     //   return () => map.remove();
     // }, []); // eslint-disable-line react-hooks/exhaustive-deps
