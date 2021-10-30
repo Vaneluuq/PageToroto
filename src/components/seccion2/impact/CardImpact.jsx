@@ -5,6 +5,7 @@ const CardImpact = ({value, name}) => {
       <div className="cardImp">
         <h3>{value}</h3>
         <p>{name}</p>
+        <div className="backgroundCard"></div>
       </div>  
     );
 }

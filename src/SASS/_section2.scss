@@ -147,6 +147,17 @@ details[open] summary {
 
 .containerImpact{
     width: 80%;
+
+    h2{
+        font-family: $roboto;
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 56px;
+        letter-spacing: 0px;
+        text-align: left;
+        color: $negro-toroto;
+    }
     
     .containerCards{
         display: flex;
@@ -155,26 +166,33 @@ details[open] summary {
 }
 
 .cardImp{
-    width: 10em;
-    height: 10em;
-    text-align: center;
+    display: flex;
+    width: 20%;
+    flex-direction: column;
+    align-items: center;
     font-family: $roboto;
     font-style: normal;
     position: relative;
+    z-index: 3;
+
+    .backgroundCard{
+        width: 100%;
+        height: 6em;
+        background:$gris5;
+        position: absolute;
+        z-index: -1;
+        bottom: 0;
+        border-radius: 10px;
+        
+    }
+
 
     h3{
         font-size: 50px;
+        margin: 0;
         color: $primary-color;
         font-weight: 700;
-        line-height: 72px;
         letter-spacing: -0.5px;
-        text-align: center;
-        margin: 0;
-        position: absolute;
-        top: 0;
-        z-index: 2;
-        padding: 0em 0.3em;
-        
     }
     
     p{
@@ -184,12 +202,8 @@ details[open] summary {
         letter-spacing: 0.15px;
         text-align: center;
         margin: 0;
-        background: $gris5;
-        position: absolute;
-        bottom: 0;
         border-radius: 10px;
-        position: absolute;
-        height: 5em;
+        padding-bottom: 1em;
     }
 }
 
@@ -200,6 +214,7 @@ details[open] summary {
     font-family: $roboto;
     font-style: normal;
     padding: 6em 0em 9em 0em;
+    color: $gris1;
 
     h3{
         font-size: 34px;
@@ -229,6 +244,7 @@ details[open] summary {
         text-align: center;
         margin-top: 2em;
         cursor: pointer;
+        text-transform: uppercase;
 
 
         &:hover{
@@ -295,5 +311,14 @@ details[open] summary {
         margin: 0;
         font-size: 1em;
     }
+  }
+
+  .sectionWorksMap{
+      width: 80%;
+      margin-top: 2em;
+      iframe{
+          width: 100%;
+          height: 25em;
+      }
   }
 }
