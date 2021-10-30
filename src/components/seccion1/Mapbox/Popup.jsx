@@ -1,31 +1,20 @@
 import React from "react";
+import Services from "../Services"
+import CardsProyects from "../CardsProyects"
 
-const Popup = ({ feature, data }) => {
-  const { id } = feature.properties;
+const Popup = ({id, location, name, description}) => {
+
 
   return (
+      <div id = {id}>
+         <CardsProyects
+        // img={getImages(card.id)}
+        location= {location}
+        name = {name}
+        description ={description}
+        />
 
-    <div id={`popup-${id}`}>
-             {data.map(card => 
-              <div key={card.id} className="divCard">
-                <CardsProyects
-                img={getImages(card.id)}
-                location= {card.location}
-                name = {card.name}
-                description ={card.description}
-                link = { getLinks(card.id)}
-               
-                servicesOffered = {
-                    card.services.map( service => 
-                        <Services
-                        service = {service}
-                        />
-                    )
-                }
-                />
-              </div>
-            )}
-    </div>
+      </div>
   );
 };
 

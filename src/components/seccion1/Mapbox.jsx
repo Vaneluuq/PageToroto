@@ -4,22 +4,27 @@ import { useRef, useEffect } from 'react';
 import '../../SASS/styles.scss';
 import { Link } from 'react-scroll';
 import iconDown from '../../assets/chevron-down.svg';
+import Popup from './Mapbox/Popup'
+// import Services from "../Services"
+import CardsProyects from '../seccion1/CardsProyects'
+import ReactDOM from "react-dom"
 
 
 mapboxgl.accessToken= "pk.eyJ1IjoidmFuZWx1dXEiLCJhIjoiY2t2NzFlYWttMHpwdDJwbzhsMHdhNG92byJ9.-tJpJFnNBJxriD-ci6olZg"
 
 
 const Mapbox = ({data}) => {
-    
-  const mapContainerRef = useRef(null);  
-  let hoveredPlaceId = null;
+
+  const popUpRef = useRef(new mapboxgl.Popup({ offset: 15 }))
+  const mapContainerRef = useRef(null);
 
 
     // initialize map when component mounts
     useEffect(() => {
+      let hoveredPlaceId = null;
+
       const map = new mapboxgl.Map({
         container: mapContainerRef.current,
-        // See style options here: https://docs.mapbox.com/api/maps/#styles
         style: "mapbox://styles/mapbox/streets-v11",
         center: [-101.896834, 23.193872],
         zoom: 4.5
@@ -40,60 +45,37 @@ const Mapbox = ({data}) => {
 
           map.addLayer({
             'id': 'maine',
-            'type': 'fill',
+            'type': 'circle',
             'source': 'torotoAPI', // reference the data source
             'layout': {},
             'paint': {
-            'fill-color': '#627BC1', // blue color fill
-            'fill-opacity': [
-              'case',
-              ['boolean', ['feature-state', 'hover'], false],
-              1,
-              0.5
-              ]
-            }
+              'circle-color': '#4264fb',
+              'circle-radius': 10,
+              'circle-stroke-width': 2,
+              'circle-stroke-color': '#ffffff'
+              }
             });
 
-            map.addLayer({
-              'id': 'outline',
-              'type': 'line',
-              'source': 'torotoAPI',
-              'layout': {},
-              'paint': {
-              'line-color': '#000',
-              'line-width': 3
-              }
+            const popup = new mapboxgl.Popup({
+              closeButton: false,
+              closeOnClick: false
+              });
+               
+
+            map.on('mousemove', 'maine', (e) => {
+              map.getCanvas().style.cursor = 'pointer';
+              const description = e.features[0].properties.description;
+              popup.setLngLat(e.lngLat).setHTML(description).addTo(map);
+           
               });
 
-          const popup = new mapboxgl.Popup({
-            closeButton: false,
-            closeOnClick: false
-            });
 
-          map.on('mousemove', 'maine', (e) => {
-            map.getCanvas().style.cursor = 'pointer';
 
-            const description = e.features[0].properties.id;
-            popup.setLngLat(e.lngLat).setHTML(description).addTo(map);
 
-              if (e.features.length > 0) {
-                if (hoveredPlaceId !== null) {
-                  map.setFeatureState(
-                    { source: 'torotoAPI', id: hoveredPlaceId},
-                    { hover: false }
-                    );
-                }
-                hoveredPlaceId = e.features[0].id;
-                  map.setFeatureState(
-                  { source: 'torotoAPI', id: hoveredPlaceId },
-                  { hover: true }
-                  );
-              }
-            })
 
               map.on('mouseleave', 'maine', () => {
                 map.getCanvas().style.cursor = '';
-                popup.remove();
+                // popup.remove();
                 if (hoveredPlaceId!== null) {
                  map.setFeatureState(
                   { source: 'torotoAPI', id: hoveredPlaceId},
@@ -101,26 +83,22 @@ const Mapbox = ({data}) => {
                 }
                 hoveredPlaceId = null;
               });
-            
+
               async function getDataToroto () {
                 let mygeojson = {"type": "FeatureCollection", "features": []}
                     for(let info of data){
                       const id = info
-                      const location = info.geometry.coordinates
-                      let coordinates = location
+                      const coordinates = info.geometry.coordinates[0][0]
                       let properties = id
-                      let feature = {"type": "Feature", "geometry": {"type": "Polygon", "coordinates": coordinates}, "properties": properties}
+                      let feature = {"type": "Feature", "geometry": {"type": "Point", "coordinates": coordinates}, "properties": properties}
                       mygeojson.features.push(feature);
                     }
-                    return mygeojson;
+                   return mygeojson
                   }
                 })
+          }, [data]); 
 
 
-
-     // clean up on unmount
-            // return () => map.remove();
-          }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
         return (
       <section className="sectionMap">
@@ -130,10 +108,11 @@ const Mapbox = ({data}) => {
           <h3>Lorem ipsum dolor is simply dummy text of the printing and typesetting industry. Lorem, ipsum dolor sit amet consectetur adipisicing elit..</h3>
           <button>Proponer un proyecto</button>
         </div>
+        <div ref={popUpRef}>popup</div>
 
         <div className="nextSecction">
             <h4> Ver lista completa de proyectos </h4>
-            <Link
+            {/* <Link
               activeClass="active"
               to="section1"
               spy={true}
@@ -141,7 +120,7 @@ const Mapbox = ({data}) => {
               offset={-70}
               duration={500}>
                 <img src={iconDown} alt=""/>
-            </Link>
+            </Link> */}
         </div>
       </section>
     );
@@ -152,4 +131,27 @@ const Mapbox = ({data}) => {
 
 
 
-  
+
+
+            // const feature = e.features;
+            // const popupNode = document.createElement("div");
+            // ReactDOM.render(<Popup feature={feature} data = {data} />, popupNode);
+            // popUpRef.current
+            // .setLngLat(e.lngLat)
+            // .setDOMContent(popupNode)
+            // .addTo(map);
+
+
+              // if (e.features.length > 0) {
+              //   if (hoveredPlaceId !== null) {
+              //     map.setFeatureState(
+              //       { source: 'torotoAPI', id: hoveredPlaceId},
+              //       { hover: false }
+              //       );
+              //   }
+              //   hoveredPlaceId = e.features[0].id;
+              //     map.setFeatureState(
+              //     { source: 'torotoAPI', id: hoveredPlaceId },
+              //     { hover: true }
+              //     );
+              // }
