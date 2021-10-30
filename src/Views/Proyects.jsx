@@ -5,16 +5,16 @@ import DescriptionProyects from '../components/seccion1/ShowProyects';
 import Footer from '../components/Footer';
 import '../SASS/styles.scss';
 
+
 const Proyects = ({data}) => {
+
+
+
     return ( 
     <>
     <Header/>
-    <Map
-    data = {data}
-    />
-    <DescriptionProyects
-      data = {data}
-    />
+    <Map data = {data}/> 
+    <DescriptionProyects data = {data}/>
     <Footer></Footer>
     </>
 );

@@ -4,6 +4,7 @@ import { Link} from 'react-router-dom';
 
 const CardsProyects = ({img, location, name, description, servicesOffered, link}) => {
     return ( 
+    <>
         <div className="card">
             <img className="cardImagen" src={img} alt="" />
             <div className="cardInformation">
@@ -17,6 +18,7 @@ const CardsProyects = ({img, location, name, description, servicesOffered, link}
                 </Link>
             </div>
         </div>
+    </>
      );
 }
  

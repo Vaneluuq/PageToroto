@@ -1,6 +1,9 @@
 
 
 
+
+@media (min-width: 850px) {
+
 .container{
   display: flex;
   flex-direction: column;
@@ -292,5 +295,5 @@ details[open] summary {
         margin: 0;
         font-size: 1em;
     }
-
+  }
 }

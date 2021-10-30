@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 import ReactMapGL, {Marker, Popup} from 'react-map-gl';
-import { Link } from 'react-scroll';
-import iconDown from '../../assets/chevron-down.svg' 
 import point from '../../assets/point_icon.png'
 import CardsProyects from './CardsProyects';
 import Services from './Services';
 import '../../SASS/styles.scss';
+import useMediaQuery from '../MediaQuery';
+import TextMap from './Map/TextMap';
+import NextSeccion from './Map/NextSection';
 
 
 
 const Map = ({data}) => {
+  const isDesktop = useMediaQuery('(min-width: 850px)');
 
   const [selectPoint, setSelectPoint] = useState(null);
 
@@ -19,7 +21,7 @@ const Map = ({data}) => {
         latitude: 23.193872,
         longitude: -101.896834,
         width: "99vw",
-        height: "80vh",
+        height: "85vh",
         zoom:4.5
       });
 
@@ -43,8 +45,11 @@ const Map = ({data}) => {
 
  
     return ( 
+
       <section className="sectionMap">
-        <div className="mapContainer">
+
+         {isDesktop ? ( 
+           <div className="mapContainer">
            <ReactMapGL
             {...viewport}
             onViewportChange={handleViewportChange}
@@ -86,26 +91,13 @@ const Map = ({data}) => {
               ) : null}
           </ReactMapGL>
         </div>
-        <div className="textContainer">
-          <h1>Somos desarrolladores de proyectos</h1>
-          <h3>Lorem ipsum dolor is simply dummy text of the printing and typesetting industry. Lorem, ipsum dolor sit amet consectetur adipisicing elit..</h3>
-          <button>Proponer un proyecto</button>
-        </div>
-
-        <div className="nextSecction">
-            <h4> Ver lista completa de proyectos </h4>
-            <Link
-              activeClass="active"
-              to="section1"
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}>
-                <img src={iconDown} alt=""/>
-            </Link>
-        </div>
+        ):(
+          <div className="bannerResponsive"></div>
+        )}
+       <TextMap></TextMap>
+       <NextSeccion></NextSeccion>
       </section>
-        );
+    );
 }
 
 export default Map;

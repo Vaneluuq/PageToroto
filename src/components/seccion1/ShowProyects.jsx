@@ -52,7 +52,7 @@ const DescriptionProyects = ({data}) => {
           <h2 className="titleSection1">Todos nuestros proyectos</h2>
           <div className="cards">
           {data.map(card => 
-              <div key={card.id}>
+              <div key={card.id} className="divCard">
                 <CardsProyects
                 img={getImages(card.id)}
                 location= {card.location}
