@@ -53,7 +53,7 @@
 
         h5{
             margin: 0;
-            font-size: 3.3vw;
+            font-size: 13px;
             font-weight: 500;
             line-height: 14px;
             letter-spacing: 0.15px;
@@ -61,14 +61,14 @@
 
         h2{
         
-            font-size: 4.4vw;
+            font-size: 18px;
             font-weight: 500;
             line-height: 20px;
             letter-spacing: 0px;
         }
 
         p{
-            font-size: 3.3vw;
+            font-size: 13px;
             font-weight: 400;
             line-height: 14px;
             letter-spacing: 0.25px;
@@ -207,11 +207,13 @@
 .service{
     display: flex;
     align-items: center;
-    border: rgb(0, 0, 0) solid 0.1em;
-    padding: 0.5em 0.8em 0.5em 0.8em;
+    border: $gris2 solid 0.1em;
+    padding: 0.2em 0.8em 0.2em 0.8em;
     margin: 0.5em;
     border-radius: 30px;
     font-size: 0.7em;
+    max-height: 3em;
+    color: $negro-toroto;
 
 
 img{
