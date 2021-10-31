@@ -3,6 +3,7 @@ import '../../SASS/styles.scss';
 import { Link} from 'react-router-dom';
 
 const CardsProyects = ({img, location, name, description, servicesOffered, link}) => {
+
     return ( 
     <>
         <div className="card">

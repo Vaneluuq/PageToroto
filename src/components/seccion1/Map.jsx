@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import ReactMapGL, {Marker, Popup} from 'react-map-gl';
 import point from '../../assets/point_icon.png'
-import CardsProyects from './CardsProyects';
-import Services from './Services';
 import '../../SASS/styles.scss';
 import useMediaQuery from '../MediaQuery';
 import TextMap from './Map/TextMap';

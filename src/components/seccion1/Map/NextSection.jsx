@@ -3,7 +3,7 @@ import { Link } from 'react-scroll';
 import iconDown from '../../../assets/chevron-down.svg' 
 import '../../../SASS/styles.scss';
 
-const NextSeccion = () => {
+const NextSection = () => {
     return (  
     <div className="nextSecction">
     <h4> Ver lista completa de proyectos </h4>
@@ -19,4 +19,4 @@ const NextSeccion = () => {
 </div>     );
 }
  
-export default NextSeccion;
+export default NextSection;
