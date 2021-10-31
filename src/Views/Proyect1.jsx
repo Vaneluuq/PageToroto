@@ -47,6 +47,7 @@ const getImages = (id) => {
   const openModal = () => setIsOpen(true);
   const closeModal = () =>  setIsOpen(false);
 
+  const dataTorotoActivities = () => data.map(item => item.activities)[0]
 
     return ( 
       <section className="section2">
@@ -64,10 +65,10 @@ const getImages = (id) => {
         <Implementation
           openModal ={openModal}
           ActividadesList = {
-          data.map(item => 
+           dataTorotoActivities().map(item => 
             <Details
-            name={item.activities[0].name}
-            description={item.activities[0].description}
+            name={item.name}
+            description={item.description}
             />
             )}
           />
