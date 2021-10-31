@@ -18,7 +18,9 @@ const customStyles = {
     left:'0',
     border: "none",
     width:"70vw",
-    height: "100vh"
+    height: "100vh",
+    padding:"0",
+    margin:"0"
   },
 };
 

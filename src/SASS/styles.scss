@@ -41,7 +41,7 @@ $negro-toroto: #373737;
 
    .optionsResponsive{
        background: $warning;
-       padding-right: 2em;
+    //    padding-right: 2em;
 
 
        .btnCloseModal{
@@ -50,6 +50,7 @@ $negro-toroto: #373737;
         position: absolute;
         top: 1em;
         right: 1em;
+        cursor: pointer;
         img{
             filter: invert(100%) sepia(0%) saturate(5296%) hue-rotate(278deg) brightness(111%) contrast(100%);
             width: 2em;
@@ -58,10 +59,24 @@ $negro-toroto: #373737;
 
        .list{
            list-style-type: none;
+           margin: 2.5em 0;
+           padding: 0;
+
 
            .item{
-               padding: 1em 0em;
+               padding: 2em 2em;
                border-bottom: $gris5 solid 0.2em;
+               transition: all ease 1s;
+
+               &:hover{
+                   background:rgb(252, 237, 209);
+                   cursor: pointer;
+
+                   a{
+                       color: $warning;
+                       font-weight: bolder;
+                   }
+               }
 
               
                a{
@@ -101,7 +116,7 @@ $negro-toroto: #373737;
 
 @media (min-width: 850px) {
     .navbar{
-        width: 100%;
+        width: 99vw;
         height: 3.5em;
         box-sizing: border-box;
         background: $primary-color;
@@ -116,6 +131,7 @@ $negro-toroto: #373737;
         position: fixed;
         top: 0;
         left: 0;
+        width: 99vw;
         }
     
     
@@ -135,28 +151,22 @@ $negro-toroto: #373737;
         }
     
         .options{
-            height: 5em;
             width: 100%;
             grid-column-start: 2;
             grid-column-end: 3;
             display: flex;
-            // justify-content: space-around;
+            justify-content:  right;
     
     
             ul {
-    
-                float:left;
-                left:30%;
-                list-style-type:none;
-                margin:0 auto;
-                padding:0;
-                position:relative;
+                list-style: none;
+                display: flex;
+                margin-right: 2em;
+                text-align: center;
+                align-items: center;
     
                 li{
-                    float:left;
-                    position:relative;
-                    right:30%;
-                    padding: 1em 2vw 1em 0em;
+                    padding: 0em 1em;
     
                     a{
                         text-decoration: none;

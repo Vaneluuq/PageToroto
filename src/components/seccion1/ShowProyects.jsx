@@ -49,28 +49,28 @@ const DescriptionProyects = ({data}) => {
 
     return ( 
         <section id="section1" className="section1">
-          <h2 className="titleSection1">Todos nuestros proyectos</h2>
-          <div className="cards">
-          {data.map(card => 
-              <div key={card.id} className="divCard">
-                <CardsProyects
-                img={getImages(card.id)}
-                location= {card.location}
-                name = {card.name}
-                description ={card.description}
-                link = { getLinks(card.id)}
-               
-                servicesOffered = {
-                    card.services.map( service => 
-                        <Services
-                        service = {service}
-                        />
-                    )
-                }
-                />
-              </div>
-            )}
-          </div>
+            <h2 className="titleSection1">Todos nuestros proyectos</h2>
+            <div className="cards">
+            {data.map(card => 
+                <div key={card.id} className="divCard">
+                  <CardsProyects
+                  img={getImages(card.id)}
+                  location= {card.location}
+                  name = {card.name}
+                  description ={card.description}
+                  link = { getLinks(card.id)}
+                
+                  servicesOffered = {
+                      card.services.map( service => 
+                          <Services
+                          service = {service}
+                          />
+                      )
+                  }
+                  />
+                </div>
+              )}
+            </div>
         </section>
      );
 }

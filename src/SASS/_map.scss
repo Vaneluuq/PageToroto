@@ -25,17 +25,17 @@
     color: $gris1;
 
         h1{
-            font-size: 8.3vw;
+            font-size: 4.5vh;
             padding-top: 0.5vw;
             font-weight: 400;
-            line-height: 7.7vw;
+            line-height: 40px;
             letter-spacing: 0px;
             text-align: center;
         }
 
         p{
             font-weight: 500;
-            font-size: 3.3vw;
+            font-size: 1.5vh;
             line-height: 3.5vw;
             letter-spacing: 0.15px;
             text-align: center;
@@ -54,6 +54,14 @@
             text-transform: uppercase;
             line-height: 16px;
             letter-spacing: 1.25px;
+            cursor: pointer;
+
+            &:hover{
+                background: $warning;
+                color: black;
+                font-weight: bolder;
+              }
+          
         }
 }
 
@@ -102,8 +110,9 @@
         height: 100vh;
     }
 
-    .mapContainer{
-        width: 100%;
+    .map-container {
+        width: 99vw;
+        height: 80vh;
     }
     
     .textContainer{
@@ -147,27 +156,52 @@
             background: $negro-toroto;
             color: $white;
             border: none;
+            cursor: pointer;
+
+            &:hover{
+                background: $warning;
+                color: $negro-toroto;
+                font-weight: bolder;
+            }
         }
     } 
     
         .nextSecction{
             width:20em;
             position: absolute;
-            top: 73%;
-            left: 45%;
+            top: 77%;
+            left: 40%;
             display: flex;
             flex-direction: column;
             text-align: center;
             color: $gris1;
-        
 
-          h4{
+        h4{
             font-size: 1.2em; 
             font-size: $oswald;
             font-weight: 600;
             font-style: normal;
             text-transform: none;
-            margin: 1em;
-          }
+            margin: 0em;
+
+        }
+
+        a{
+            animation-name: mybutton;
+            animation-iteration-count: infinite;
+            animation-duration: 1.5s;
+            position: relative;
+            cursor: pointer;
+        }
+
+        @keyframes mybutton {
+            0%{ top: 0px}
+            25%{top:5px}
+            50%{top: 10px;}
+            75%{top: 15px;}
+            100%{top: 20px}
+        }
+
+        
     }
 }

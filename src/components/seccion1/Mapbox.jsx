@@ -2,14 +2,13 @@ import React from 'react';
 import mapboxgl from 'mapbox-gl';
 import { useRef, useEffect, useState} from 'react';
 import '../../SASS/styles.scss';
-import { Link } from 'react-scroll';
-import iconDown from '../../assets/chevron-down.svg';
 import  useMediaQuery from '../MediaQuery';
 import TextMap from './Map/TextMap'
 import NextSection from './Map/NextSection'
 
 
 mapboxgl.accessToken= "pk.eyJ1IjoidmFuZWx1dXEiLCJhIjoiY2t2NzFlYWttMHpwdDJwbzhsMHdhNG92byJ9.-tJpJFnNBJxriD-ci6olZg"
+
 
 const Mapbox = ({data}) => {
   const isDesktop = useMediaQuery('(min-width: 850px)');
