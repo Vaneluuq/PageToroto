@@ -201,7 +201,14 @@
             75%{top: 15px;}
             100%{top: 20px}
         }
+    }
 
-        
+    .popUpClass{
+        width: 35em;
+        height: 10em;
+        background: green;
+        img{
+            width: 5em;
+        }
     }
 }

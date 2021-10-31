@@ -3,17 +3,24 @@ import mapboxgl from 'mapbox-gl';
 import { useRef, useEffect, useState} from 'react';
 import '../../SASS/styles.scss';
 import  useMediaQuery from '../MediaQuery';
-import TextMap from './Map/TextMap'
-import NextSection from './Map/NextSection'
+import TextMap from './Map/TextMap';
+import NextSection from './Map/NextSection';
+import route from '../routes'
 
 
-mapboxgl.accessToken= "pk.eyJ1IjoidmFuZWx1dXEiLCJhIjoiY2t2NzFlYWttMHpwdDJwbzhsMHdhNG92byJ9.-tJpJFnNBJxriD-ci6olZg"
+mapboxgl.accessToken= "pk.eyJ1IjoidmFuZWx1dXEiLCJhIjoiY2t2NzFlYWttMHpwdDJwbzhsMHdhNG92byJ9.-tJpJFnNBJxriD-ci6olZg";
 
 
 const Mapbox = ({data}) => {
   const isDesktop = useMediaQuery('(min-width: 850px)');
   const ref = useRef(null);
   const [map, setMap] = useState(null);
+
+  const getImages = (id) => {
+    for (let i = 0; i< route.length; i++){
+      if(route[i].id === id){
+      return route[i].image
+    }}};
 
 
     useEffect(() => {
@@ -56,7 +63,8 @@ const Mapbox = ({data}) => {
 
             const popup = new mapboxgl.Popup({
               closeButton: false,
-              closeOnClick: false
+              closeOnClick: false,
+              className: 'popUpClass'
               });
 
             map.on('mousemove', 'maine', (e) => {
@@ -65,12 +73,13 @@ const Mapbox = ({data}) => {
                 const locationProyect = e.features[0].properties.location;
                 const nameProyect = e.features[0].properties.name;
                 const descriptionProyect= e.features[0].properties.description;
-                const imgProyect= e.features[0].properties;
-            
+                const imgProyect= e.features[0].properties.id;
+                const image = getImages(imgProyect)
+
                 popup.setLngLat(e.lngLat)
                      .setHTML(
-                        `<img className="cardImagen" src=${imgProyect} alt="" />
-                        <h5>${locationProyect}</h5>
+                        `<img src=${image} alt="" />
+                          <h5>${locationProyect}</h5>
                           <h2>${nameProyect}</h2>
                           <p>${descriptionProyect}</p>
                           `)

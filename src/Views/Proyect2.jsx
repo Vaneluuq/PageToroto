@@ -12,7 +12,7 @@ import About from '../components/seccion2/AboutToroto';
 import CardsImpact from '../components/seccion2/impact/CardImpact'
 import Modal from 'react-modal';
 import ModalInfo from '../components/seccion2/ModalInfo';
-import route from '../components/routas'
+import route from '../components/routes'
 
 
 //Estilos modal
@@ -47,7 +47,8 @@ const getImages = (id) => {
   const openModal = () => setIsOpen(true);
   const closeModal = () =>  setIsOpen(false);
 
-  const dataTorotoActivities = () => data.map(item => item.activities)[0]
+  const dataTorotoActivities = () => data.map(item => item.activities)[0];
+  const dataTorotoServices = () => data.map(item => item.services)[1];
 
 
     return ( 
@@ -59,8 +60,8 @@ const getImages = (id) => {
             description ={data.map(item => item.description)[1]}
             descriptionProblem = {data.map(item => item.problem)}
             imgProyect = {getImages(data.map(item => item.id)[1])}
-            servicesOffered = { data.map(item => 
-                <Services service = {item.services[1]}
+            servicesOffered = { dataTorotoServices().map(item => 
+                <Services service = {item}
               />)}
           />
         <Implementation
