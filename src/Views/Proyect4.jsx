@@ -60,17 +60,21 @@ const getImages = (id) => {
             descriptionProblem = {data.map(item => item.problem)}
             imgProyect = {getImages(data.map(item => item.id)[3])}
             servicesOffered = { dataTorotoServices().map(item => 
-                <Services service = {item}
-              />)}
+              <div key={item.id}>
+                <Services service = {item}/>
+              </div>
+              )}
           />
         <Implementation
           openModal ={openModal}
           ActividadesList = {
            dataTorotoActivities().map(item => 
-            <Details
-            name={item.name}
-            description={item.description}
-            />
+            <div key={item.id}>
+              <Details
+              name={item.name}
+              description={item.description}
+              />
+            </div>
             )}
           />
           {
@@ -91,10 +95,13 @@ const getImages = (id) => {
         <Impact
           cardsImpact= {
             data.map(item => 
-            <CardsImpact
-              value={item.impact[2].value}
-              name ={item.impact[2].name}
-            />
+              <div key={item.id}>
+                 <CardsImpact
+                    value={item.impact[2].value}
+                    name ={item.impact[2].name}
+                  />
+
+              </div>
             )}/>
         <About/>
         <Footer/>

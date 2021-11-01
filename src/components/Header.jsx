@@ -26,7 +26,7 @@ const customStyles = {
 
 
 const Header = () => {
-    const [scrolled,setScrolled]=React.useState(false);
+    const [scrolled,setScrolled]= useState(false);
     const isDesktop = useMediaQuery('(min-width: 850px)');
 
 

@@ -50,6 +50,9 @@ const getImages = (id) => {
   const dataTorotoActivities = () => data.map(item => item.activities)[0];
   const dataTorotoServices = () => data.map(item => item.services)[0];
 
+
+
+
     return ( 
       <section className="section2">
         <Header/>
@@ -59,14 +62,16 @@ const getImages = (id) => {
             description ={data.map(item => item.description)[0]}
             descriptionProblem = {data.map(item => item.problem)}
             imgProyect = {getImages(data.map(item => item.id)[0])}
-            servicesOffered = {dataTorotoServices().map(item => 
-                <Services service = {item}
-              />)}
-          />
+            servicesOffered = {dataTorotoServices().map( item =>
+              <div key={item.id}>
+                <Services service = {(item)}/>
+              </div>
+             )}
+        />
         <Implementation
           openModal ={openModal}
           ActividadesList = {
-           dataTorotoActivities().map(item => 
+            dataTorotoActivities().map(item => 
             <div key={item.id}>
                 <Details
                   name={item.name}
@@ -93,10 +98,12 @@ const getImages = (id) => {
         <Impact
           cardsImpact= {
             data.map(item => 
-            <CardsImpact
-              value={item.impact[0].value}
-              name ={item.impact[0].name}
-            />
+              <div key= {item.id}>
+                <CardsImpact
+                  value={item.impact[0].value}
+                  name ={item.impact[0].name}
+                />
+              </div>
             )}/>
         <About/>
         <Footer/>

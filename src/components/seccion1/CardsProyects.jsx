@@ -12,8 +12,7 @@ const CardsProyects = ({img, location, name, description, servicesOffered, link}
                 <h5>{location}</h5>
                 <h2>{name}</h2>
                 <p>{description}</p>
-                <div className="cardServices">
-                    {servicesOffered}</div>
+                <div className="cardServices">{servicesOffered}</div>
                 <Link to= {link}>
                   <button>Ver proyecto completo</button>
                 </Link>

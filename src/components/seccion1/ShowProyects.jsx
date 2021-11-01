@@ -61,12 +61,13 @@ const DescriptionProyects = ({data}) => {
                   link = { getLinks(card.id)}
                 
                   servicesOffered = {
-                      card.services.map( service => 
+                      card.services.map(service => 
+                        <div key= {service.id}>
                           <Services
                           service = {service}
                           />
-                      )
-                  }
+                        </div>
+                      )}
                   />
                 </div>
               )}

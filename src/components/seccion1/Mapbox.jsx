@@ -35,7 +35,7 @@ const Mapbox = ({data}) => {
         });
       setMap(map); 
     
-      // add navigation control (zoom buttons)
+
       map.addControl(new mapboxgl.NavigationControl(), "bottom-right");
 
 
@@ -75,14 +75,22 @@ const Mapbox = ({data}) => {
                 const descriptionProyect= e.features[0].properties.description;
                 const imgProyect= e.features[0].properties.id;
                 const image = getImages(imgProyect)
+                const popUps = document.getElementsByClassName('mapboxgl-popup');
+                if (popUps[0]) popUps[0].remove();
+
+               
 
                 popup.setLngLat(e.lngLat)
                      .setHTML(
-                        `<img src=${image} alt="" />
-                          <h5>${locationProyect}</h5>
-                          <h2>${nameProyect}</h2>
-                          <p>${descriptionProyect}</p>
+                        `
+                        <div>
+                          <img src=${image} alt="" />
+                            <h5>${locationProyect}</h5>
+                            <h2>${nameProyect}</h2>
+                            <p>${descriptionProyect}</p>
+                        </div>
                           `)
+                        
                       .addTo(map);
                 }
               });

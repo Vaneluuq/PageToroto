@@ -9,11 +9,12 @@ $white: #fff;
 $warning: #ffbc15;
 $roboto:'Roboto', sans-serif;
 $negro-toroto: #373737;
+$filter-white: invert(100%) sepia(0%) saturate(5296%) hue-rotate(278deg) brightness(111%) contrast(100%);
+$filter-yellow: invert(70%) sepia(98%) saturate(540%) hue-rotate(345deg) brightness(101%) contrast(101%);
 
 @import "./map";
 @import "./section1";
 @import "./section2";
-@import './mapbox';
 
 
 //navbar & footer
@@ -29,7 +30,7 @@ $negro-toroto: #373737;
        border: none;
 
        .iconMenu{
-        filter: invert(100%) sepia(0%) saturate(5296%) hue-rotate(278deg) brightness(111%) contrast(100%);}
+        filter: $filter-white }
      }
    }
 
