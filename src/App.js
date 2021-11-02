@@ -5,7 +5,7 @@ import Proyect1 from './Views/Proyect1';
 import Proyect2 from './Views/Proyect2';
 import Proyect3 from './Views/Proyect3';
 import Proyect4 from './Views/Proyect4';
-import axios from 'axios';
+// import axios from 'axios';
 
 
 import {
@@ -17,16 +17,29 @@ import {
 
 function App() {
   const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
 
 
-  useEffect(() => {
-    axios.get('https://fieldops-api.toroto.mx/api/projects')
-     .then(response => {
-        setData(response.data.data);
-      })
-       .catch(e => {
-        console.log(e);
-         })
+//   useEffect(() => {
+//     axios.get('https://fieldops-api.toroto.mx/api/projects')
+//      .then(response => {
+//         setData(response.data.data);
+//       })
+//        .catch(e => {
+//         console.log(e);
+//          })
+// }, []);
+
+useEffect(() => {
+  fetch("https://fieldops-api.toroto.mx/api/projects")
+    .then(res => res.json())
+    .then((result) => {
+      setData(result.data);
+    },
+      (error) => {
+        setError(error);
+      }
+    )
 }, []);
 
   return (

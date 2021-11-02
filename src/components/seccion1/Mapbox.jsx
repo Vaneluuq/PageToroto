@@ -42,6 +42,7 @@ const Mapbox = ({data}) => {
       map.on("load", async() => {
         const geojson = await getDataToroto();
 
+        
         map.addSource('torotoAPI', {
             type: 'geojson',
             data: geojson,
@@ -54,22 +55,27 @@ const Mapbox = ({data}) => {
             'source': 'torotoAPI', // reference the data source
             'layout': {},
             'paint': {
-              'circle-color': '#000000',
+              'circle-color': '#373737',
               'circle-radius': 10,
               'circle-stroke-width': 2,
-              'circle-stroke-color': '#ffffff'
+              'circle-stroke-color': '#373737'
               }
             });
 
             const popup = new mapboxgl.Popup({
               closeButton: false,
               closeOnClick: false,
-              className: 'popUpClass'
+              className: 'popUpClass',
+              autoPanPaddingTopLeft: 0,
+              offset: 25, 
+              maxWidth: '240px'
+
               });
 
             map.on('mousemove', 'maine', (e) => {
               map.getCanvas().style.cursor = 'pointer';
               if (e.features.length) {
+              
                 const locationProyect = e.features[0].properties.location;
                 const nameProyect = e.features[0].properties.name;
                 const descriptionProyect= e.features[0].properties.description;
@@ -80,15 +86,13 @@ const Mapbox = ({data}) => {
 
                
 
-                popup.setLngLat(e.lngLat)
+                    popup.setLngLat(e.lngLat)
                      .setHTML(
                         `
-                        <div>
-                          <img src=${image} alt="" />
+                            <img src=${image} alt="" />
                             <h5>${locationProyect}</h5>
                             <h2>${nameProyect}</h2>
                             <p>${descriptionProyect}</p>
-                        </div>
                           `)
                         
                       .addTo(map);

@@ -31,7 +31,7 @@ const ModalInfo = ({closeModal}) => {
                 <div className="btnModal">
                   <button>PROPONE UN PROYECTO </button>
                   <span>Ver los proyectos</span>
-                    <img src={nextIcon}></img>
+                    <img src={nextIcon} alt="img_next"></img>
                 </div>
             </div>
         </div>
