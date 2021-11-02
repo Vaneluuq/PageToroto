@@ -17,104 +17,119 @@
 
     .descriptionProyect{
         width: 100%;
-        display: flex;
-        flex-wrap: wrap;
+        height: auto;
         justify-content: center;
         font-family: $roboto;
         font-style: normal;
-    }
 
-    .itemsDescriptionProyect{
-        order: 2;
-        font-family: $roboto;
-        font-style: normal;
-        color: $gris1;
-        font-weight: 400;
-        padding: 0em 1em;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
+        .imgProyect{
+            background-image: url('../assets/banner_background_image\ 1.png');
+            width: 100vw;
+            height: 20em;
+            position: relative;
+            z-index: -1;
 
-        h4{
-            line-height: 16px;
-            letter-spacing: 0.18px;
-            text-align: left;
+            .whiteSpace{
+              position: absolute;
+              bottom: 0;
+              background: $white;
+              width: 100%;
+              height: 2em;
+              border-top-left-radius: 20px;
+              border-top-right-radius: 20px;
+            }
+        }
+
+
+        .itemsDescriptionProyect{
+            font-family: $roboto;
+            font-style: normal;
+            color: $gris1;
             font-weight: 400;
-        }
-        h2{
-            font-size: 24px;
-            line-height: 28px;
-            letter-spacing: 0px;
-            text-align: left;
-            font-weight: 400;
-        }
+            padding: 0em 1em;
+            background: $white;
     
-        p{
-            color: $gris2;
-            font-size: 12px;
-            font-weight: 500;
-            line-height: 14px;
-            letter-spacing: 0.15px;
-            text-align: left;
-
-        }
-    
-        .itemsSevices{
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-
-    
-            .service{
-                width: 15em;
-                border: $negro-toroto solid 0.1em;
+            h4{
+                line-height: 16px;
+                letter-spacing: 0.18px;
+                text-align: left;
+                font-weight: 400;
+                margin: 0;
+            }
+            h2{
+                font-size: 24px;
+                line-height: 28px;
+                letter-spacing: 0px;
+                text-align: left;
+                font-weight: 400;
+            }
+        
+            p{
+                color: $gris2;
                 font-size: 12px;
                 font-weight: 500;
                 line-height: 14px;
-                letter-spacing: 0.1px;
+                letter-spacing: 0.15px;
                 text-align: left;
-                border-radius: 30px;
-                margin: 0em 0.1em 0.5em 0.1em;
-                padding: 0.3em 0.1em;
-                display: flex;
-                align-items: center;
-
-                
-
+    
             }
-        }
+        
+            .itemsSevices{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+    
+        
+                .service{
+                    width: 15em;
+                    border: $negro-toroto solid 0.1em;
+                    font-size: 12px;
+                    font-weight: 500;
+                    line-height: 14px;
+                    letter-spacing: 0.1px;
+                    text-align: left;
+                    border-radius: 30px;
+                    margin: 0em 0.1em 0.5em 0.1em;
+                    padding: 0.3em 0.1em;
+                    display: flex;
+                    align-items: center;
+    
+                    
+    
+                }
+            }}
     }
 
-    .imgProyect{
-        width: 100vw;
-        order: 1;
+    
+     
+    
+        .descriptionProblem{
+            order: 3;
+            font-family: $roboto;
+            font-style: normal;
+            font-weight: 400;
+            color: $gris1;
+    
+            h3{
+                font-size: 14px;
+                line-height: 16px;
+                letter-spacing: 0.18px;
+                text-align: left;
+    
+            }
+    
+            p{
+               
+                font-size: 14px;
+                line-height: 16px;
+                letter-spacing: 0.5px;
+                text-align: left;
+    
+            }
         
     }
 
-    .descriptionProblem{
-        order: 3;
-        font-family: $roboto;
-        font-style: normal;
-        font-weight: 400;
-        padding: 0em 1em;
-        color: $gris1;
-
-        h3{
-            font-size: 14px;
-            line-height: 16px;
-            letter-spacing: 0.18px;
-            text-align: left;
-
-        }
-
-        p{
-           
-            font-size: 14px;
-            line-height: 16px;
-            letter-spacing: 0.5px;
-            text-align: left;
-
-        }
-    }
+  
 
 
     .implementation{
@@ -678,7 +693,7 @@ details[open] summary {
     font-family: $roboto;
     font-style: normal;
     position: relative;
-    z-index: 3;
+
 
     .backgroundCard{
         width: 100%;

@@ -50,6 +50,8 @@ const getImages = (id) => {
   const dataTorotoActivities = () => data.map(item => item.activities)[0];
   const dataTorotoServices = () => data.map(item => item.services)[0];
 
+  console.log(data)
+
 
 
 
